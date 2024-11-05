@@ -44,8 +44,50 @@
             </div>
         </div>
 
-        <div id="gameContainer" class="game-container"></div>
-        <button class="back-button">Back to Games</button>
+        <div class="game-container" id="gameContainer">
+            <iframe class="game-iframe" id="gameIframe"></iframe>
+          </div>
+        
+          <button class="back-button" id="backButton">Back to Games</button>
+        
     </main>
+    <script>
+        const gameGrid = document.getElementById('gameGrid');
+        const gameContainer = document.getElementById('gameContainer');
+        const gameIframe = document.getElementById('gameIframe');
+        const backButton = document.getElementById('backButton');
+        const homeLink = document.querySelector('.home-link');
+        const gamesLink = document.querySelector('.games-link');
+    
+        function showGameGrid() {
+          gameGrid.style.display = 'grid';
+          gameContainer.style.display = 'none';
+          backButton.style.display = 'none';
+        }
+    
+        function showGame(gameUrl) {
+          gameGrid.style.display = 'none';
+          gameContainer.style.display = 'block';
+          backButton.style.display = 'block';
+          gameIframe.src = gameUrl;
+        }
+    
+        document.querySelectorAll('.game-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const gameUrl = card.dataset.gameUrl;
+            showGame(gameUrl);
+          });
+        });
+    
+        backButton.addEventListener('click', showGameGrid);
+        homeLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          showGameGrid();
+        });
+        gamesLink.addEventListener('click', (e) => {
+          e.preventDefault();
+          showGameGrid();
+        });
+      </script>
 </body>
 </html>
