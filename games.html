@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,7 +17,7 @@
         </div>
     </nav>
 
-    <main>
+    <main role="main">
         <div id="gameGrid" class="game-grid">
             <div class="game-card" game-url="/GameMaker-Het-Streek/TestHtml5">
                 <img src="/GameMaker-Het-Streek/TestHtml5/logo.jpg" alt="Test HTML5 Game">
@@ -36,7 +36,7 @@
             </div>
 
             <div class="game-card" game-url="/GameMaker-Het-Streek/(De naam van de map van je game)">
-                <img src="/GameMaker-Het-Streek/(De naam van de map van je game)/logo.jpg" alt="Naam game logo">
+                <img src="/GameMaker-Het-Streek/(De%20naam%20van%20de%20map%20van%20je%20game)/logo.jpg" alt="Naam game logo">
                 <div class="content">
                     <h2>Naam van game</h2>
                     <p>Omschrijving game</p>
@@ -45,8 +45,7 @@
         </div>
 
         <div id="gameContainer" class="game-container"></div>
-        
-        <button onclick="window.location.href='games.html'" class="back-button">Back to Games</button>
+        <button class="back-button">Back to Games</button>
     </main>
 </body>
 </html>
