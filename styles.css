@@ -1,196 +1,215 @@
-/* General styles */
-body {
-    font-family: 'Nova Mono', monospace;
+/* Galaxy Theme CSS for Het Streek Games */
+
+/* Global Styles */
+:root {
+    --space-dark: #0a0a2a;
+    --space-light: #1a1a4a;
+    --star-color: #fff;
+    --accent-purple: #9d4edd;
+    --accent-blue: #48bfe3;
+    --glow: 0 0 10px rgba(255, 255, 255, 0.5);
+  }
+  
+  body {
     margin: 0;
     padding: 0;
-    background: radial-gradient(ellipse at center, #0f0f18 0%, #040412 100%);
-    color: #fff;
-    overflow-x: hidden;
     min-height: 100vh;
+    background: linear-gradient(45deg, var(--space-dark), var(--space-light));
+    font-family: 'Arial', sans-serif;
+    color: white;
+    position: relative;
+    overflow-x: hidden;
   }
   
-  /* Header and navigation styles */
-  header {
-    background: linear-gradient(to right, #6b5beb, #9f5ced);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    box-shadow: 0 0 40px rgba(107, 91, 235, 0.5);
-    animation: headerGlow 3s infinite alternate;
-    position: sticky;
+  /* Animated Stars Background */
+  body::before {
+    content: '';
+    position: fixed;
     top: 0;
-    z-index: 100;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+      radial-gradient(2px 2px at 20px 30px, var(--star-color), rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 40px 70px, var(--star-color), rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 50px 160px, var(--star-color), rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 90px 40px, var(--star-color), rgba(0,0,0,0)),
+      radial-gradient(2px 2px at 130px 80px, var(--star-color), rgba(0,0,0,0));
+    background-repeat: repeat;
+    animation: stars 15s linear infinite;
+    z-index: 0;
   }
   
-  header h1 {
-    font-size: 32px;
+  /* Navigation Styles */
+  .nav-content {
+    background: rgba(10, 10, 42, 0.8);
+    backdrop-filter: blur(10px);
+    padding: 1rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 0 20px rgba(77, 14, 221, 0.3);
+  }
+  
+  .nav-content h1 {
+    color: var(--star-color);
+    text-align: center;
     margin: 0;
-    text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+    font-size: 2.5rem;
+    text-shadow: var(--glow);
+    animation: glow 2s ease-in-out infinite alternate;
   }
   
-  nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
+  .nav-links {
+    text-align: center;
+    margin-top: 1rem;
   }
   
-  nav li {
-    margin-left: 20px;
-  }
-  
-  nav a {
-    color: #fff;
+  .nav-links a {
+    color: var(--star-color);
     text-decoration: none;
-    font-size: 18px;
-    padding: 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-    cursor: pointer;
+    margin: 0 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
   }
   
-  nav a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
+  .nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: 0.5s;
   }
   
-  /* Game grid styles */
+  .nav-links a:hover::before {
+    left: 100%;
+  }
+  
+  /* Home Page Styles */
+  .home-content {
+    text-align: center;
+    padding: 4rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .home-content h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: var(--glow);
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, var(--accent-purple), var(--accent-blue));
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(77, 14, 221, 0.5);
+  }
+  
+  .cta-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(77, 14, 221, 0.8);
+  }
+  
+  /* Games Grid Styles */
   .game-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-    gap: 30px;
-    padding: 60px;
-    animation: contentFade 1s ease-in-out;
-    justify-items: center;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
   }
   
   .game-card {
-    background: linear-gradient(45deg, rgba(31, 31, 46, 0.8), rgba(19, 19, 32, 0.8));
-    border-radius: 10px;
-    box-shadow: 0 0 40px rgba(107, 91, 235, 0.5);
+    background: rgba(26, 26, 74, 0.8);
+    border-radius: 15px;
     overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 15px rgba(77, 14, 221, 0.3);
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    animation: cardFade 0.5s ease-in-out;
-    width: 400px;
   }
   
   .game-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 60px rgba(107, 91, 235, 0.8);
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(77, 14, 221, 0.6);
   }
   
   .game-card img {
-    width: 400px;
+    width: 100%;
     height: 200px;
     object-fit: cover;
-    filter: brightness(0.8) saturate(1.2);
-    transition: filter 0.3s ease;
-    display: block;
+    transition: all 0.3s ease;
   }
   
-  .game-card:hover img {
-    filter: brightness(1) saturate(1.5);
+  .game-card .content {
+    padding: 1.5rem;
   }
   
-  .content {
-    padding: 20px;
-    text-align: center;
-    background: linear-gradient(45deg, rgba(31, 31, 46, 0.95), rgba(19, 19, 32, 0.95));
+  .game-card h2 {
+    margin: 0 0 1rem 0;
+    color: var(--star-color);
+    font-size: 1.5rem;
+    text-shadow: var(--glow);
   }
   
-  .content h2 {
-    font-size: 24px;
-    margin: 0 0 10px 0;
-  }
-  
-  .content p {
-    font-size: 16px;
-    margin: 0;
-    opacity: 0.8;
-  }
-  
-  /* Game iframe container */
+  /* Game Container */
   .game-container {
-    display: none;
-    padding: 20px;
-    height: calc(100vh - 100px);
-    animation: contentFade 0.5s ease-in-out;
-  }
-  
-  .game-iframe {
+    position: fixed;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    border: none;
-    border-radius: 10px;
-    box-shadow: 0 0 40px rgba(107, 91, 235, 0.5);
-  }
-  
-  .back-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(to right, #6b5beb, #9f5ced);
-    color: white;
-    border: none;
-    padding: 15px 30px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-family: 'Nova Mono', monospace;
-    font-size: 16px;
-    box-shadow: 0 0 20px rgba(107, 91, 235, 0.5);
-    transition: all 0.3s ease;
+    background: rgba(10, 10, 42, 0.95);
+    backdrop-filter: blur(10px);
     display: none;
-    z-index: 101;
-  }
-  
-  .back-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 0 30px rgba(107, 91, 235, 0.8);
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 480px) {
-    .game-grid {
-      grid-template-columns: 1fr;
-      padding: 20px;
-    }
-    
-    .game-card {
-      width: 100%;
-    }
-    
-    .game-card img {
-      width: 100%;
-      height: auto;
-    }
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
   }
   
   /* Animations */
-  @keyframes headerGlow {
-    0% { box-shadow: 0 0 20px rgba(107, 91, 235, 0.5); }
-    100% { box-shadow: 0 0 60px rgba(107, 91, 235, 0.8); }
-  }
-  
-  @keyframes contentFade {
-    0% {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    100% {
-      opacity: 1;
+  @keyframes stars {
+    from {
       transform: translateY(0);
     }
+    to {
+      transform: translateY(-100%);
+    }
   }
   
-  @keyframes cardFade {
-    0% {
-      opacity: 0;
-      transform: scale(0.9);
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px var(--accent-purple);
     }
-    100% {
-      opacity: 1;
-      transform: scale(1);
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px var(--accent-purple);
+    }
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .nav-content h1 {
+      font-size: 2rem;
+    }
+    
+    .home-content h2 {
+      font-size: 2rem;
+    }
+    
+    .game-grid {
+      grid-template-columns: 1fr;
+      padding: 1rem;
     }
   }
