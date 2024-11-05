@@ -48,6 +48,7 @@
     position: relative;
     z-index: 1;
     box-shadow: 0 0 20px rgba(77, 14, 221, 0.3);
+    border-radius: 10px;
   }
   
   .nav-content h1 {
@@ -90,6 +91,11 @@
     left: 100%;
   }
   
+  .nav-links a:hover {
+    transform: scale(1.1);
+    border-radius: 25px;
+  }
+  
   /* Home Page Styles */
   .home-content {
     text-align: center;
@@ -120,6 +126,7 @@
   .cta-button:hover {
     transform: scale(1.05);
     box-shadow: 0 0 25px rgba(77, 14, 221, 0.8);
+    border-radius: 30px;
   }
   
   /* Games Grid Styles */
@@ -177,6 +184,7 @@
     justify-content: center;
     align-items: center;
     z-index: 100;
+    border-radius: 15px;
   }
   
   /* Animations */
@@ -213,3 +221,4 @@
       padding: 1rem;
     }
   }
+  
