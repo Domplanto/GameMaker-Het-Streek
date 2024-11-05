@@ -65,10 +65,11 @@
     /* Game grid styles */
     .game-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
       gap: 30px;
       padding: 60px;
       animation: contentFade 1s ease-in-out;
+      justify-items: center;
     }
 
     .game-card {
@@ -80,6 +81,7 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       position: relative;
       animation: cardFade 0.5s ease-in-out;
+      width: 400px;
     }
 
     .game-card:hover {
@@ -88,11 +90,12 @@
     }
 
     .game-card img {
-      width: 100%;
+      width: 400px;
       height: 200px;
       object-fit: cover;
       filter: brightness(0.8) saturate(1.2);
       transition: filter 0.3s ease;
+      display: block;
     }
 
     .game-card:hover img {
@@ -102,6 +105,7 @@
     .content {
       padding: 20px;
       text-align: center;
+      background: linear-gradient(45deg, rgba(31, 31, 46, 0.95), rgba(19, 19, 32, 0.95));
     }
 
     .content h2 {
@@ -152,6 +156,23 @@
     .back-button:hover {
       transform: scale(1.1);
       box-shadow: 0 0 30px rgba(107, 91, 235, 0.8);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      .game-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+      }
+      
+      .game-card {
+        width: 100%;
+      }
+      
+      .game-card img {
+        width: 100%;
+        height: auto;
+      }
     }
 
     /* Animations */
@@ -236,14 +257,12 @@
     const homeLink = document.querySelector('.home-link');
     const gamesLink = document.querySelector('.games-link');
 
-    // Function to show game grid
     function showGameGrid() {
       gameGrid.style.display = 'grid';
       gameContainer.style.display = 'none';
       backButton.style.display = 'none';
     }
 
-    // Function to show game
     function showGame(gameUrl) {
       gameGrid.style.display = 'none';
       gameContainer.style.display = 'block';
@@ -251,7 +270,6 @@
       gameIframe.src = gameUrl;
     }
 
-    // Add click event listeners to game cards
     document.querySelectorAll('.game-card').forEach(card => {
       card.addEventListener('click', () => {
         const gameUrl = card.dataset.gameUrl;
@@ -259,15 +277,11 @@
       });
     });
 
-    // Add click event listener to back button
     backButton.addEventListener('click', showGameGrid);
-
-    // Add click event listeners to navigation links
     homeLink.addEventListener('click', (e) => {
       e.preventDefault();
       showGameGrid();
     });
-
     gamesLink.addEventListener('click', (e) => {
       e.preventDefault();
       showGameGrid();
