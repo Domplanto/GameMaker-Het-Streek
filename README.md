@@ -47,8 +47,8 @@ Voorbeeld van een nieuwe game-kaart:
 ```
 
 ### Testen
-1. Open de website in je browser door het `index.html` bestand te openen of te hosten via een lokale server.
-2. Controleer of jouw game-kaart correct wordt weergegeven in het `Games` gedeelte.
+1. Open de website in je browser https://domplanto.github.io/GameMaker-Het-Streek/.
+2. Controleer of jouw game-kaart correct wordt weergegeven.
 3. Klik op je game-kaart om te testen of de game in de iframe wordt geladen.
 
 ---
